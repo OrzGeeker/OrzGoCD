@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# -*- coding: utf-8 -*-
+echo "----------------------"
+echo "Install GoCD Server..."
+echo "----------------------"
+
+echo "deb https://download.gocd.org /" | sudo tee /etc/apt/sources.list.d/gocd.list
+curl https://download.gocd.org/GOCD-GPG-KEY.asc | sudo apt-key add -
+sudo apt-get update
+sudo add-apt-repository ppa:openjdk-r/ppa
+sudo apt-get update
+sudo apt-get install -y openjdk-8-jre
+sudo apt-get install go-server
+
+echo "----------------------"
+echo "GoCD Server Installed."
+echo "======================"
+echo "Install GoCD Agent...."
+echo "----------------------"
+
+sudo apt-get install go-agent
+
+echo "----------------------"
+echo "GoCD Agent Instanned. "
+echo "----------------------"
+
+echo "To manage the go-server/go-agent service, you may use the following command: "
+echo "	$ sudo /etc/init.d/go-server [start|stop|status|restart]"
+echo "  $ sudo /etc/init.d/go-agent [start|stop|status|restart]"
+echo "Once the installation is complete the GoCD server will be started and it will print out the URL for the Dashboard page. This will be http://localhost:8153/go"
+
+echo "More thing please visit:"
+echo "	GoCD Server: https://docs.gocd.org/current/installation/install/server/linux.html#debian-based-distributions-ie-ubuntu"
+echo "	GoCD Agent : https://docs.gocd.org/current/installation/install/agent/linux.html"
+
