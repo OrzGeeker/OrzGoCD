@@ -17,7 +17,5 @@ $ sudo /etc/init.d/go-agent start
 # Usage
 
 I have configure the GoCD Server with authentication, you can use the guest accunt login.
-
 `username`: **`guest`**
-
 `password`: **`guest`**
