@@ -21,3 +21,7 @@ I have configure the GoCD Server with authentication, you can use the guest accu
 `username`: **`guest`**
 
 `password`: **`guest`**
+
+管理员：wangzhizhou
+
+管理员密钥: 欧拉公式
