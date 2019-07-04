@@ -2,7 +2,6 @@
 
 OrzGeeker's Continuous Delivery server 
 
-- [OrzGoCD](http://ci.jokerhub.cn)
 - [Tutorial](https://www.gocd.org/help/)
 
 # Install On Ubuntu 
@@ -13,15 +12,3 @@ $ ./config-ubuntu
 $ sudo /etc/init.d/go-server start
 $ sudo /etc/init.d/go-agent start
 ```
-
-# Usage
-
-I have configure the GoCD Server with authentication, you can use the guest accunt login.
-
-`username`: **`guest`**
-
-`password`: **`guest`**
-
-管理员：wangzhizhou
-
-管理员密钥: 欧拉公式
