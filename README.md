@@ -12,3 +12,10 @@ $ ./config-ubuntu
 $ sudo /etc/init.d/go-server start
 $ sudo /etc/init.d/go-agent start
 ```
+
+# Install On Mac
+
+```bash
+$ git clone --depth=1 https://github.com/OrzGeeker/OrzGoCD.git
+$ ./config-mac
+```
