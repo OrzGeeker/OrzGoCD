@@ -30,9 +30,13 @@ DOCKER_VERSION="$(docker -v)"
 if [[ $? -eq 0 ]];
 then
     GOCD_DOCKER_IMAGE_NAME="gocd-mac"
-    GOCD_DOCKER_CONTAINR_NAME="gocd"    
-    docker build -t $GOCD_DOCKER_IMAGE_NAME .
-    docker run --name $GOCD_DOCKER_CONTAINR_NAME -d -p 8153:8153 $GOCD_DOCKER_IMAGE_NAME
+    GOCD_DOCKER_CONTAINR_NAME="gocd" 
+    EXIST_IMAGE=$(docker images | grep $GOCD_DOCKER_IMAGE_NAME)
+    if [[ -z "$EXIST_IMAGE" ]];
+    then
+        docker build -t $GOCD_DOCKER_IMAGE_NAME .
+    fi
+    docker run --name $GOCD_DOCKER_CONTAINR_NAME -p 8153:8153 $GOCD_DOCKER_IMAGE_NAME
     open -a Safari http://localhost:8153/go
     echo "Open with broswer(may wait some seconds and refresh page):"
     echo 
