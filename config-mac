@@ -36,7 +36,7 @@ then
     then
         docker build -t $GOCD_DOCKER_IMAGE_NAME .
     fi
-    docker run --name $GOCD_DOCKER_CONTAINR_NAME -p 8153:8153 $GOCD_DOCKER_IMAGE_NAME
+    docker run -d --name $GOCD_DOCKER_CONTAINR_NAME -p 8153:8153 $GOCD_DOCKER_IMAGE_NAME
     open -a Safari http://localhost:8153/go
     echo "Open with broswer(may wait some seconds and refresh page):"
     echo 
