@@ -2,25 +2,8 @@
 # -*- coding: utf-8 -*-
 
 HOME_BREW_VERSION="$(brew -v)"
-if [[ $? -eq 0 ]];
+if [[ $? -ne 0 ]];
 then
-    DOCKER_VERSION="$(docker -v)"
-    if [[ $? -ne 0 ]];
-    then
-        echo "----------------------"
-        echo "Install Docker ..."
-        echo "----------------------"
-        brew cask install docker
-        echo "----------------------"
-        echo "Docker Installation Completion!!!"
-        echo "----------------------"    
-        open -a docker
-        echo Run Docker and Complete The Process of Installation
-    fi
-    GOCD_DOCKER_IMAGE_NAME="gocd-mac"
-    docker build -t $GOCD_DOCKER_IMAGE_NAME .
-    docker run -it -p 4000:80 $GOCD_DOCKER_IMAGE_NAME bash
-else
     echo "----------------------"
     echo "Install Homebrew ..."
     echo "----------------------"
@@ -29,6 +12,34 @@ else
     echo "Homebrew Installation Completion!!!"
     echo "----------------------"
 fi
+
+DOCKER_VERSION="$(docker -v)"
+if [[ $? -ne 0 ]];
+then
+    echo "----------------------"
+    echo "Install Docker ..."
+    echo "----------------------"
+    brew cask install docker
+    echo "----------------------"
+    echo "Docker Installation Completion!!!"
+    echo "----------------------"    
+    open -a docker && echo Run Docker and Complete The Process of Installation
+fi
+
+DOCKER_VERSION="$(docker -v)"
+if [[ $? -eq 0 ]];
+then
+    GOCD_DOCKER_IMAGE_NAME="gocd-mac"
+    GOCD_DOCKER_CONTAINR_NAME="gocd"    
+    docker build -t $GOCD_DOCKER_IMAGE_NAME .
+    docker run --name $GOCD_DOCKER_CONTAINR_NAME -d -p 8153:8153 $GOCD_DOCKER_IMAGE_NAME
+    open -a Safari http://localhost:8153/go
+    echo "Open with broswer(may wait some seconds and refresh page):"
+    echo 
+    echo "  http://localhost:8153/go"
+fi
+
+
 
 
 
