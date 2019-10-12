@@ -9,8 +9,7 @@ OrzGeeker's Continuous Delivery server
 ```bash
 $ git clone --depth=1 https://github.com/OrzGeeker/OrzGoCD.git
 $ ./config-ubuntu
-$ sudo /etc/init.d/go-server start
-$ sudo /etc/init.d/go-agent start
+$ sudo systemctl start go-agent.service go-server.service
 ```
 
 # Install On Mac
